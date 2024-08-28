@@ -1,0 +1,53 @@
+first_name: John
+last_name: Doe
+email: john.doe@example.com
+phone: +1234567890
+location: San Francisco, CA
+
+job_titles:
+  - title: Software Engineer
+    tags:
+      - software-engineer
+
+  - title: Golang Developer
+    tags:
+      - golang-developer
+
+skills:
+  - name: Golang
+    tags:
+      - golang
+  - name: Docker
+    tags:
+      - docker
+      - devops
+
+work_experience:
+  - company: Acme Inc.
+    position: Software Engineer
+    location: San Francisco, CA
+    type: on-site
+    start_date: "2021-01-01"
+    end_date: ""
+    achievements:
+      - description: "Implemented a new feature"
+        tags:
+          - software-engineer
+      - description: "Optimized the performance of the service"
+        tags:
+          - software-engineer
+      - description: "Improved the CI/CD pipeline"
+        tags:
+          - devops
+
+  - company: Acme Inc.
+    position: Golang Developer
+    location: San Francisco, CA
+    type: remote
+    start_date: "2018-01-01"
+    end_date: "2020-12-31"
+    achievements:
+      - description: "Implemented a new feature"
+        tags:
+          - golang-developer
+          - golang
