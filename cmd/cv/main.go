@@ -7,15 +7,23 @@ import (
 	"log"
 	"os"
 
-	"github.com/go-pdf/fpdf"
 	"gopkg.in/yaml.v3"
 
 	"github.com/ivanlemeshev/cv/internal/cv"
+	"github.com/ivanlemeshev/cv/internal/pdf"
 )
 
 var (
-	inputFile  = flag.String("file", "cv.yml", "Path to the YAML file containing the CV data")
-	outputFile = flag.String("output", "cv.pdf", "Path to the generated PDF file")
+	inputFile = flag.String(
+		"file",
+		"cv.yml",
+		"Path to the YAML file containing the CV data",
+	)
+	outputFile = flag.String(
+		"output",
+		"cv.pdf",
+		"Path to the generated PDF file",
+	)
 )
 
 func main() {
@@ -45,16 +53,8 @@ func main() {
 	fmt.Printf("First name: %s\n", cvData.FirstName)
 	fmt.Printf("Last name: %s\n", cvData.LastName)
 
-	const oritentation = "P" // Portrait
-	const unit = "mm"        // Millimeters
-	const size = "A4"        // A4 paper size
-
-	pdf := fpdf.New(oritentation, unit, size, "")
-	pdf.AddPage()
-	pdf.SetFont("Arial", "B", 16)
-	pdf.Cell(40, 10, cvData.FirstName+" "+cvData.LastName)
-
-	if err := pdf.OutputFileAndClose(*outputFile); err != nil {
+	err = pdf.Generate(cvData, *outputFile)
+	if err != nil {
 		log.Fatalf("error: %v", err)
 	}
 }
